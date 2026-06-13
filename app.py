@@ -14,7 +14,7 @@ st.subheader("Making Complex Documents Easy For Everyone")
 col1, col2, col3 = st.columns([1, 3, 1])
 
 with col2:
-    st.image("assets/image.jpeg", width=300)
+    st.image("image.jpeg", width=300)
 
 st.write("📄 Enter or Upload a Document")
 
