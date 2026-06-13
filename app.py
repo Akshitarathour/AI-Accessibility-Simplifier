@@ -156,7 +156,7 @@ Text:
 )
 
     response_text = response.choices[0].message.content
-    st.markdown("## 🤖 AI Generated Output")
+    
     st.write(response_text)
     st.success("✅ Document analyzed successfully")
 
