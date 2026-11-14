@@ -99,50 +99,93 @@ if st.button("🚀 Analyze Document"):
 
         st.stop()
 
-    # Prompt creation
-    if option == "Simplified Version":
+  
+# Prompt creation
+if option == "Simplified Version":
 
-        prompt = f"""
-Simplify the following text.
+    prompt = f"""
+You are an expert document simplification assistant.
+
+Your task is to rewrite the given document in easy and understandable language.
 
 Audience: {audience_level}
 Language: {lang}
 Simplicity Level: {simplicity}/10
 
+IMPORTANT RULES:
+1. Preserve all original facts, figures, percentages, dates,
+   names, eligibility conditions and requirements.
+2. Never change the meaning of any rule or statement.
+3. Do not add information, assumptions or advice that is
+   not present in the original document.
+4. Do not remove important details.
+5. Explain difficult words using simple language.
+6. Keep important technical and official terms, and explain
+   them in brackets wherever necessary.
+7. Preserve reservation rules and percentages accurately.
+8. If something is unclear in the original text, do not guess.
+9. Use clear headings, short sentences and bullet points.
+10. Avoid unnecessary repetition.
+11. Return only the simplified document.
+
 Text:
 {document_text}
 """
 
-    elif option == "Key Points":
+elif option == "Key Points":
 
-        prompt = f"""
-Extract the most important key points.
+    prompt = f"""
+Extract the most important points from the following document.
 
 Language: {lang}
 
-Text:
-{document_text}
-"""
-
-    elif option == "Summary":
-
-        prompt = f"""
-Summarize the following text in {lang}.
+Rules:
+1. Include all important facts, figures, dates and conditions.
+2. Preserve the original meaning and exact percentages.
+3. Do not add information that is not in the document.
+4. Use simple language and bullet points.
+5. Avoid repeating points.
 
 Text:
 {document_text}
 """
 
-    elif option == "Next Steps":
+elif option == "Summary":
 
-        prompt = f"""
-Read the following document and tell the user what actions they should take.
+    prompt = f"""
+Summarize the following document in {lang}.
+
+Rules:
+1. Include the main purpose and important information.
+2. Preserve important facts, numbers, dates and conditions.
+3. Do not change the meaning of the original document.
+4. Do not add unsupported information.
+5. Use clear and concise language.
+
+Text:
+{document_text}
+"""
+
+elif option == "Next Steps":
+
+    prompt = f"""
+Read the following document and identify the actions
+or steps mentioned in it.
 
 Language: {lang}
 
+Rules:
+1. Include only actions supported by the document.
+2. Do not invent deadlines, requirements or procedures.
+3. Preserve important dates and conditions.
+4. If the document does not specify a next step,
+   clearly mention that.
+5. Present the steps in a numbered list.
+
 Text:
 {document_text}
 """
+
 
     with st.spinner("AI is processing your document... ⏳"):
             response = client.chat.completions.create(
